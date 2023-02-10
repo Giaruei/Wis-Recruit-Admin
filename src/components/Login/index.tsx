@@ -2,7 +2,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-30 16:40:24
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-10 13:18:56
+ * @LastEditTime: 2023-02-10 13:39:09
  * @FilePath: \WIS-Recruit\src\components\Login\index.tsx
  * @Description:
  */
@@ -67,7 +67,7 @@ const Login = () => {
 						color: "#95de64",
 					}}
 				>
-					欢迎来到WISSdudio
+					欢迎来到WISSdudio~
 				</h1>
 				<Form.Item
 					name="adminNum"
