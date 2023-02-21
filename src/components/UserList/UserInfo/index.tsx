@@ -3,7 +3,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-14 14:32:49
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-10 12:47:34
+ * @LastEditTime: 2023-02-21 09:25:36
  * @FilePath: \WIS-Recruit\src\components\UserList\UserInfo\index.tsx
  * @Description: 展示学生的个人信息和管理员的评价
  */
@@ -53,12 +53,12 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 	// 获取评论的请求
 	const queryComment = () => {
 		api
-			.get("/comment/", {
+			.get("/comment/" + userId, {
 				method: "get",
 				headers: {
 					token: localStorage.getItem("token"),
 				},
-				params: { userId: userId },
+				// params: { userId: userId },
 			})
 			.then((res) => {
 				// 把评论保存起来
@@ -68,12 +68,12 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 	// 先获取个人的信息和大家对其的评论
 	useEffect(() => {
 		api
-			.get("/info/", {
+			.get("/info/" + userId, {
 				method: "get",
 				headers: {
 					token: localStorage.getItem("token"),
 				},
-				params: { userId: userId },
+				// params: { userId: userId },
 			})
 			.then((res) => {
 				// 把个人信息保存起来
@@ -145,13 +145,13 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 						onConfirm={() => {
 							api
 								.put(
-									"/progress/",
+									"/progress/" + userId,
 									{ progress: progress, status: status },
 									{
 										headers: {
 											token: localStorage.getItem("token"),
 										},
-										params: { userId: userId },
+										// params: { userId: userId },
 									}
 								)
 								.then((res) => {
@@ -188,13 +188,13 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 								cancelText="取消"
 								onConfirm={() => {
 									api
-										.delete("/comment/", {
+										.delete("/comment/" + data.id, {
 											headers: {
 												token: localStorage.getItem("token"),
 											},
-											params: {
-												id: data.id,
-											},
+											// params: {
+											// 	id: data.id,
+											// },
 										})
 										.then(() => {
 											// 删除后重新加载评论
@@ -220,13 +220,13 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 								onConfirm={() => {
 									api
 										.put(
-											"/comment/",
+											"/comment/" + data.id,
 											{ context: putComment },
 											{
 												headers: {
 													token: localStorage.getItem("token"),
 												},
-												params: { id: data.id },
+												// params: { id: data.id },
 											}
 										)
 										.then(() => {
@@ -263,7 +263,7 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 					// todo: 没有判断输入框里是否为空
 					api
 						.post(
-							"/comment/",
+							"/comment/" + userId,
 							{
 								context: addComment,
 								adminName: localStorage.getItem("adminName"),
@@ -272,7 +272,7 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 								headers: {
 									token: localStorage.getItem("token"),
 								},
-								params: { userId: userId },
+								// params: { userId: userId },
 							}
 						)
 						.then(() => {

@@ -1,15 +1,15 @@
-import { Segmented } from "antd";
-import axios from "axios";
-import { FC, useState } from "react";
-
 /*
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-29 22:11:34
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-01-29 22:20:48
- * @FilePath: \antd-demo-ts\src\components\Interview\InterviewTable\Select-index.tsx
- * @Description:
- */
+ * @LastEditTime: 2023-02-21 09:28:41
+ * @FilePath: \WIS-Recruit\src\components\Interview\InterviewTable\Select-index.tsx
+ * @Description: 这个组件用以修改面试的状态
+ */ 
+import { Segmented } from "antd";
+import axios from "axios";
+import { FC, useState } from "react";
+
 interface Iprops {
 	status: string;
 	id: string;
@@ -27,13 +27,13 @@ const Select: FC<Iprops> = ({ status, id }) => {
 				if (v === "面试已结束") {
 					setState(v as string);
 					api.put(
-						"/interview/",
+						"/interview/" + id,
 						{},
 						{
 							headers: {
 								token: localStorage.getItem("token"),
 							},
-							params: { id: id },
+							// params: { id: id },
 						}
 					);
 				}

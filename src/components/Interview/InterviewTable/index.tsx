@@ -2,8 +2,8 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-19 15:02:57
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-01-30 16:08:03
- * @FilePath: \antd-demo-ts\src\components\Interview\InterviewTable\index.tsx
+ * @LastEditTime: 2023-02-21 09:29:03
+ * @FilePath: \WIS-Recruit\src\components\Interview\InterviewTable\index.tsx
  * @Description: 展示面试人员的列表 可修改考核状态
  */
 import { Card, Drawer, Space } from "antd";
@@ -31,12 +31,12 @@ const InterviewTable: FC<Iprops> = ({ direction }) => {
 	const [data, setData] = useState<Array<Idata>>([]);
 	useEffect(() => {
 		api
-			.get("/interviewTime/", {
+			.get("/interviewTime/" + direction, {
 				method: "get",
 				headers: {
 					token: localStorage.getItem("token"),
 				},
-				params: { direction: direction },
+				// params: { direction: direction },
 			})
 			.then((res) => {
 				setData(res.data.data);
