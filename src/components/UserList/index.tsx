@@ -41,6 +41,7 @@ const UserList: FC<Iprops> = ({ index }) => {
 				},
 			})
 			.then((res) => {
+				console.log(res);
 				if (res.data.code !== 407 || res.data.code !== 401) {
 					setUserData(res.data.data);
 				} else {
