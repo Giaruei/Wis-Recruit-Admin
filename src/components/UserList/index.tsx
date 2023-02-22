@@ -3,7 +3,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-11 21:55:51
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-10 13:05:24
+ * @LastEditTime: 2023-02-22 21:24:32
  * @FilePath: \WIS-Recruit\src\components\UserList\index.tsx
  * @Description: 用于展示各个方向所有学生信息
  */
@@ -11,6 +11,7 @@ import { Card, Drawer } from "antd";
 import { FC, useEffect, useState } from "react";
 import axios from "axios";
 import UserInfo from "./UserInfo";
+import Login from "../Login";
 
 interface Iprops {
 	// 本组件传参 各组对应的方向
@@ -40,7 +41,13 @@ const UserList: FC<Iprops> = ({ index }) => {
 				},
 			})
 			.then((res) => {
-				setUserData(res.data.data);
+				if (res.data.code !== 407 || res.data.code !== 401) {
+					setUserData(res.data.data);
+				} else {
+					alert("token过期了，请重新登录");
+					localStorage.removeItem("token");
+					return <Login />;
+				}
 			});
 	}, [index]);
 

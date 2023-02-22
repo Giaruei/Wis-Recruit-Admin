@@ -3,7 +3,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-14 14:32:49
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-21 09:25:36
+ * @LastEditTime: 2023-02-22 21:26:05
  * @FilePath: \WIS-Recruit\src\components\UserList\UserInfo\index.tsx
  * @Description: 展示学生的个人信息和管理员的评价
  */
@@ -17,6 +17,7 @@ import {
 } from "@ant-design/icons";
 import axios from "axios";
 import { FC, useEffect, useState } from "react";
+import Login from "../../Login";
 const { TextArea } = Input;
 
 interface Iprops {
@@ -76,11 +77,17 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 				// params: { userId: userId },
 			})
 			.then((res) => {
-				// 把个人信息保存起来
-				setUserData(res.data.data);
-				// 保存个人考核状态进度
-				setProgress(res.data.data.progress);
-				setStatus(res.data.data.status);
+				if (res.data.code !== 407 || res.data.code !== 401) {
+					// 把个人信息保存起来
+					setUserData(res.data.data);
+					// 保存个人考核状态进度
+					setProgress(res.data.data.progress);
+					setStatus(res.data.data.status);
+				} else {
+					alert("token过期了，请重新登录");
+					localStorage.getItem("token");
+					return <Login />;
+				}
 			});
 		// 获取评论
 		queryComment();
@@ -143,20 +150,16 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 						title="修改状态吗"
 						description="点击确认即可修改状态"
 						onConfirm={() => {
-							api
-								.put(
-									"/progress/" + userId,
-									{ progress: progress, status: status },
-									{
-										headers: {
-											token: localStorage.getItem("token"),
-										},
-										// params: { userId: userId },
-									}
-								)
-								.then((res) => {
-									console.log(res.data);
-								});
+							api.put(
+								"/progress/" + userId,
+								{ progress: progress, status: status },
+								{
+									headers: {
+										token: localStorage.getItem("token"),
+									},
+									// params: { userId: userId },
+								}
+							);
 						}}
 						okText="好的"
 						cancelText="取消"
@@ -260,26 +263,28 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 				type="primary"
 				icon={<RocketOutlined />}
 				onClick={() => {
-					// todo: 没有判断输入框里是否为空
-					api
-						.post(
-							"/comment/" + userId,
-							{
-								context: addComment,
-								adminName: localStorage.getItem("adminName"),
-							},
-							{
-								headers: {
-									token: localStorage.getItem("token"),
+					// 判断输入框有无内容 只有有的情况下才会发请求
+					if (addComment) {
+						api
+							.post(
+								"/comment/" + userId,
+								{
+									context: addComment,
+									adminName: localStorage.getItem("adminName"),
 								},
-								// params: { userId: userId },
-							}
-						)
-						.then(() => {
-							// 添加后重新加载评论
-							queryComment();
-						});
-					setAddComment("");
+								{
+									headers: {
+										token: localStorage.getItem("token"),
+									},
+									// params: { userId: userId },
+								}
+							)
+							.then(() => {
+								// 添加后重新加载评论
+								queryComment();
+							});
+						setAddComment("");
+					}
 				}}
 			>
 				发表评论

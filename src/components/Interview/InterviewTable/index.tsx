@@ -2,7 +2,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-19 15:02:57
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-21 09:29:03
+ * @LastEditTime: 2023-02-22 17:37:11
  * @FilePath: \WIS-Recruit\src\components\Interview\InterviewTable\index.tsx
  * @Description: 展示面试人员的列表 可修改考核状态
  */
@@ -19,7 +19,7 @@ interface Idata {
 	userName: string;
 	interviewTime: string;
 	id: string;
-	status: string;
+	status: number;
 	userId: string;
 }
 

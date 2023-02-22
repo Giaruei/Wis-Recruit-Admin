@@ -2,7 +2,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-30 16:40:24
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-10 19:40:08
+ * @LastEditTime: 2023-02-22 16:56:46
  * @FilePath: \WIS-Recruit\src\components\Login\index.tsx
  * @Description:
  */
@@ -30,7 +30,9 @@ const Login = () => {
 			})
 			.then((res) => {
 				if (res.data.code) {
+					console.log(res);
 					// 如果正确则跳进主页面
+					// 把token和用户名存储在浏览器中
 					localStorage.setItem("token", res.data.data.token);
 					localStorage.setItem("adminName", res.data.data.adminName);
 					return navigate("/");
@@ -91,7 +93,7 @@ const Login = () => {
 					登录
 				</Button>
 			</Form>
-			<ParticlesBg type="polygon"  />
+			<ParticlesBg type="square" />
 		</ConfigProvider>
 	);
 };

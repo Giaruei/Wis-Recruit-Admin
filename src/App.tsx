@@ -9,6 +9,7 @@ import {
 	DeleteTwoTone,
 	WomanOutlined,
 	FileExcelTwoTone,
+	HighlightFilled,
 } from "@ant-design/icons";
 import { Button, ConfigProvider, Layout, Menu, Switch, theme } from "antd";
 import UserList from "./components/UserList";
@@ -18,7 +19,7 @@ import Login from "./components/Login";
 const { Content, Footer, Sider } = Layout;
 
 const App: FC = () => {
-	const [index, setIndex] = useState("1"); // 设置菜单的分页
+	const [index, setIndex] = useState("0"); // 设置菜单的分页
 	const [collapsed, setCollapsed] = useState(false); // 设置菜单展开收起
 	const [dark, setDark] = useState(false); // 设置主题黑暗
 
@@ -46,7 +47,7 @@ const App: FC = () => {
 				style={{
 					margin: 0,
 					padding: 0,
-					minHeight: "729px",
+					minHeight: "1000px",
 				}}
 			>
 				<Sider
@@ -69,22 +70,27 @@ const App: FC = () => {
 					</div>
 					<Menu
 						mode="inline"
-						defaultSelectedKeys={["1"]}
+						defaultSelectedKeys={["0"]}
 						items={[
 							{
-								key: "1",
+								key: "0",
 								icon: <Html5Filled />,
 								label: "伟大的前端组",
 							},
 							{
-								key: "2",
+								key: "1",
 								icon: <ConsoleSqlOutlined />,
 								label: "辉煌的后端组",
 							},
 							{
-								key: "3",
+								key: "2",
 								icon: <AndroidFilled />,
 								label: "无敌的安卓组",
+							},
+							{
+								key: "3",
+								icon: <HighlightFilled />,
+								label: "UUUUUUI组",
 							},
 							{
 								key: "4",
@@ -139,6 +145,7 @@ const App: FC = () => {
 								right: 10,
 							}}
 							onClick={() => {
+								// todo: 修改请求的方式
 								axios("http://43.139.33.166/api/admin/export/excel", {
 									method: "post",
 									headers: {
@@ -160,7 +167,7 @@ const App: FC = () => {
 						</div>
 					</Content>
 					<Footer style={{ textAlign: "center" }}>
-						WISStudio ©2023 Created by GDUT
+						WISStudio ©2023 Created by CJR
 					</Footer>
 				</Layout>
 			</Layout>
