@@ -3,7 +3,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-11 21:55:51
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-22 21:24:32
+ * @LastEditTime: 2023-02-22 23:31:41
  * @FilePath: \WIS-Recruit\src\components\UserList\index.tsx
  * @Description: 用于展示各个方向所有学生信息
  */
@@ -42,7 +42,11 @@ const UserList: FC<Iprops> = ({ index }) => {
 			})
 			.then((res) => {
 				console.log(res);
-				if (res.data.code !== 407 || res.data.code !== 401) {
+				if (
+					res.data.code !== 407 ||
+					res.data.code !== 406 ||
+					res.data.code !== 401
+				) {
 					setUserData(res.data.data);
 				} else {
 					alert("token过期了，请重新登录");
