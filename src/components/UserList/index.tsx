@@ -43,18 +43,12 @@ const UserList: FC<Iprops> = ({ index }) => {
 			})
 			.then((res) => {
 				console.log(res);
-				if (
-					res.data.code !== 407 &&
-					res.data.code !== 406 &&
-					res.data.code !== 401
-				) {
+				if (res.data.success) {
 					setUserData(res.data.data);
 				} else {
 					alert("token过期了，请重新登录");
-					// history.
 					localStorage.removeItem("token");
 					return navigate("");
-					// return <Login />;
 				}
 			});
 	}, [index]);

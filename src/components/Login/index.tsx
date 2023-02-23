@@ -2,7 +2,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-30 16:40:24
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-23 16:16:56
+ * @LastEditTime: 2023-02-23 23:33:32
  * @FilePath: \WIS-Recruit\src\components\Login\index.tsx
  * @Description:
  */
@@ -34,7 +34,7 @@ const Login = () => {
 					// 把token和用户名存储在浏览器中
 					localStorage.setItem("token", res.data.data.token);
 					localStorage.setItem("adminName", res.data.data.adminName);
-					return navigate("/");
+					return navigate("");
 				} else {
 					// 若数据库没有这个账号密码则提示错误
 					alert("学号/密码错误，请重新输入");
