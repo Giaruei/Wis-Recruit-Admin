@@ -2,7 +2,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-19 15:02:57
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-22 17:37:11
+ * @LastEditTime: 2023-02-23 23:58:03
  * @FilePath: \WIS-Recruit\src\components\Interview\InterviewTable\index.tsx
  * @Description: 展示面试人员的列表 可修改考核状态
  */
@@ -25,6 +25,7 @@ interface Idata {
 
 const api = axios.create({
 	baseURL: "http://43.139.33.166/api/admin",
+	// baseURL: "http://127.0.0.1:4523/m1/1875832-0-default/admin",
 });
 
 const InterviewTable: FC<Iprops> = ({ direction }) => {
@@ -50,7 +51,22 @@ const InterviewTable: FC<Iprops> = ({ direction }) => {
 		setOpen(true);
 	};
 	return (
-		<Space direction="vertical" style={{ width: "400px" }}>
+		<Space direction="vertical" style={{ width: "100%" }}>
+			<h3 style={{ textAlign: "center" }}>
+				{(() => {
+					// 这里用Switch语句要用一个立即执行函数包裹
+					switch (direction) {
+						case 0:
+							return "前端";
+						case 1:
+							return "后端";
+						case 2:
+							return "安卓";
+						case 3:
+							return "UI";
+					}
+				})()}
+			</h3>
 			{data?.map((data) => {
 				return (
 					<Card key={data.id}>

@@ -2,7 +2,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-15 19:28:41
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-22 17:06:51
+ * @LastEditTime: 2023-02-23 23:58:56
  * @FilePath: \WIS-Recruit\src\components\Interview\index.tsx
  * @Description: 面试页面的名单
  */
