@@ -3,7 +3,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-14 14:32:49
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-22 21:54:18
+ * @LastEditTime: 2023-02-23 16:14:17
  * @FilePath: \WIS-Recruit\src\components\UserList\UserInfo\index.tsx
  * @Description: 展示学生的个人信息和管理员的评价
  */
@@ -17,7 +17,7 @@ import {
 } from "@ant-design/icons";
 import axios from "axios";
 import { FC, useEffect, useState } from "react";
-import Login from "../../Login";
+import { useNavigate } from "react-router-dom";
 const { TextArea } = Input;
 
 interface Iprops {
@@ -51,6 +51,7 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 	const [addComment, setAddComment] = useState<string>("");
 	const [progress, setProgress] = useState<number>(0);
 	const [status, setStatus] = useState<number>(0);
+	const navigate = useNavigate();
 	// 获取评论的请求
 	const queryComment = () => {
 		api
@@ -77,8 +78,7 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 				// params: { userId: userId },
 			})
 			.then((res) => {
-				console.log("用户数据" + res);
-
+				console.log(res);
 				if (
 					res.data.code !== 407 ||
 					res.data.code !== 406 ||
@@ -91,8 +91,8 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 					setStatus(res.data.data.status);
 				} else {
 					alert("token过期了，请重新登录");
-					localStorage.getItem("token");
-					return <Login />;
+					localStorage.removeItem("token");
+					return navigate("");
 				}
 			});
 		// 获取评论
