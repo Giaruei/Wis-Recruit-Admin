@@ -3,7 +3,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-11 21:55:51
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-23 16:17:44
+ * @LastEditTime: 2023-02-24 19:59:11
  * @FilePath: \WIS-Recruit\src\components\UserList\index.tsx
  * @Description: 用于展示各个方向所有学生信息
  */
@@ -48,6 +48,7 @@ const UserList: FC<Iprops> = ({ index }) => {
 				} else {
 					alert("token过期了，请重新登录");
 					localStorage.removeItem("token");
+					localStorage.removeItem("adminName");
 					return navigate("");
 				}
 			});

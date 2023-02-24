@@ -2,7 +2,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-29 22:11:34
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-23 23:37:32
+ * @LastEditTime: 2023-02-24 19:58:26
  * @FilePath: \WIS-Recruit\src\components\Interview\InterviewTable\Select-index.tsx
  * @Description: 这个组件用以修改面试的状态
  */
@@ -43,6 +43,7 @@ const Select: FC<Iprops> = ({ status, id }) => {
 							if (!res.data.success) {
 								alert("token过期了，请重新登录");
 								localStorage.removeItem("token");
+								localStorage.removeItem("adminName")
 								return navigate("");
 							}
 						});

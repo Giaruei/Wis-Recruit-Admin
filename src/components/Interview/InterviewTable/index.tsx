@@ -2,13 +2,14 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-19 15:02:57
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-23 23:58:03
+ * @LastEditTime: 2023-02-24 19:59:35
  * @FilePath: \WIS-Recruit\src\components\Interview\InterviewTable\index.tsx
  * @Description: 展示面试人员的列表 可修改考核状态
  */
 import { Card, Drawer, Space } from "antd";
 import axios from "axios";
 import { FC, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import UserInfo from "../../UserList/UserInfo";
 import Select from "./Select-index";
 
@@ -30,6 +31,7 @@ const api = axios.create({
 
 const InterviewTable: FC<Iprops> = ({ direction }) => {
 	const [data, setData] = useState<Array<Idata>>([]);
+	const navigate = useNavigate();
 	useEffect(() => {
 		api
 			.get("/interviewTime/" + direction, {
@@ -40,7 +42,14 @@ const InterviewTable: FC<Iprops> = ({ direction }) => {
 				// params: { direction: direction },
 			})
 			.then((res) => {
-				setData(res.data.data);
+				if (res.data.success) {
+					setData(res.data.data);
+				} else {
+					alert("token过期了，请重新登录");
+					localStorage.removeItem("token");
+					localStorage.removeItem("adminName");
+					return navigate("");
+				}
 			});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);

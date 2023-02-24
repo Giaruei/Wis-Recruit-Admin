@@ -88,6 +88,7 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 				} else {
 					alert("token过期了，请重新登录");
 					localStorage.removeItem("token");
+					localStorage.removeItem("adminName");
 					return navigate("");
 				}
 			});

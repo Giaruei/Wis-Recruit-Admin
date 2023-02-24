@@ -145,9 +145,8 @@ const App: FC = () => {
 								right: 10,
 							}}
 							onClick={() => {
-								// todo: 修改请求的方式
-								axios("http://43.139.33.166/api/admin/export/excel", {
-									method: "post",
+								axios("http://43.139.33.166/api/admin/export/excel/" + index, {
+									method: "get",
 									headers: {
 										token: localStorage.getItem("token"),
 									},
