@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react";
-import axios from "axios";
 import {
 	MenuFoldOutlined,
 	MenuUnfoldOutlined,
@@ -19,10 +18,9 @@ import Login from "./components/Login";
 const { Content, Footer, Sider } = Layout;
 
 const App: FC = () => {
-	const [index, setIndex] = useState("0"); // 设置菜单的分页
+	const [index, setIndex] = useState<string>("0"); // 设置菜单的分页
 	const [collapsed, setCollapsed] = useState(false); // 设置菜单展开收起
 	const [dark, setDark] = useState(false); // 设置主题黑暗
-
 	const darkTheme = {
 		token: {
 			colorPrimary: "#95de64",
@@ -145,12 +143,9 @@ const App: FC = () => {
 								right: 10,
 							}}
 							onClick={() => {
-								axios("http://43.139.33.166/api/admin/export/excel/" + index, {
-									method: "get",
-									headers: {
-										token: localStorage.getItem("token"),
-									},
-								});
+								window.location.href = `http://43.139.33.166/api/admin/export/excel/ + ${parseInt(
+									index
+								)}`;
 							}}
 						>
 							导出EXcel表格

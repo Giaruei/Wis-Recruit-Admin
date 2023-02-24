@@ -3,7 +3,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-14 14:32:49
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-23 23:30:34
+ * @LastEditTime: 2023-02-24 20:14:12
  * @FilePath: \WIS-Recruit\src\components\UserList\UserInfo\index.tsx
  * @Description: 展示学生的个人信息和管理员的评价
  */
@@ -78,7 +78,6 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 				// params: { userId: userId },
 			})
 			.then((res) => {
-				console.log(res);
 				if (res.data.success) {
 					// 把个人信息保存起来
 					setUserData(res.data.data);

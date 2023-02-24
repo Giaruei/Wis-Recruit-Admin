@@ -2,7 +2,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-19 15:02:57
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-24 19:59:35
+ * @LastEditTime: 2023-02-24 20:08:31
  * @FilePath: \WIS-Recruit\src\components\Interview\InterviewTable\index.tsx
  * @Description: 展示面试人员的列表 可修改考核状态
  */
