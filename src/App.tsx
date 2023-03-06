@@ -134,22 +134,27 @@ const App: FC = () => {
 							checkedChildren="Light"
 							unCheckedChildren="Dark"
 						/>
-						<Button
-							icon={<FileExcelTwoTone twoToneColor="#95de64" />}
-							shape="round"
-							style={{
-								position: "absolute",
-								top: 16,
-								right: 10,
-							}}
-							onClick={() => {
-								window.location.href = `http://43.139.33.166/api/admin/export/excel/ + ${parseInt(
-									index
-								)}`;
-							}}
-						>
-							导出EXcel表格
-						</Button>
+						{index !== "4" ? (
+							<Button
+								icon={<FileExcelTwoTone twoToneColor="#95de64" />}
+								shape="round"
+								style={{
+									position: "absolute",
+									top: 16,
+									right: 10,
+								}}
+								onClick={() => {
+									// 带上token跳转
+									window.location.href = `http://43.139.33.166/api/admin/export/excel/${
+										parseInt(index) + "?token=" + localStorage.getItem("token")
+									}`;
+								}}
+							>
+								导出EXcel表格
+							</Button>
+						) : (
+							""
+						)}
 					</div>
 					<Content style={{ margin: "24px 16px 0" }}>
 						<div
@@ -170,3 +175,21 @@ const App: FC = () => {
 };
 
 export default App;
+// const xhr = new XMLHttpRequest();
+// xhr.open(
+// 	"get",
+// 	`http://43.139.33.166/api/admin/export/excel/1`,
+// 	true
+// );
+// xhr.responseType = "blob";
+// xhr.setRequestHeader("token", localStorage.getItem("token")!);
+// xhr.onload = function () {
+// 	if (this.status === 200) {
+// 		const blob = this.response;
+// 		const a = document.createElement("a");
+// 		const url = window.URL.createObjectURL(blob);
+// 		a.href = url;
+// 		a.download = ".xls";
+// 	}
+// };
+// xhr.send();

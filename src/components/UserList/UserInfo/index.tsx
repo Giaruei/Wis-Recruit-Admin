@@ -3,7 +3,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-14 14:32:49
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-24 20:14:12
+ * @LastEditTime: 2023-03-07 00:08:40
  * @FilePath: \WIS-Recruit\src\components\UserList\UserInfo\index.tsx
  * @Description: 展示学生的个人信息和管理员的评价
  */
@@ -97,16 +97,19 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 
 	return (
 		<Space direction="vertical" style={{ width: "100%" }}>
-			<Descriptions bordered layout="vertical" column={4}>
+			<Descriptions bordered layout="vertical" column={5}>
 				<Descriptions.Item label="姓名">{userData?.userName}</Descriptions.Item>
 				<Descriptions.Item label="学院">{userData?.academy}</Descriptions.Item>
 				<Descriptions.Item label="学号">
 					{userData?.stuNumber}
 				</Descriptions.Item>
+				<Descriptions.Item label="手机">
+					{userData?.phoneNum}
+				</Descriptions.Item>
 				<Descriptions.Item label="方向">
 					{userData?.direction}
 				</Descriptions.Item>
-				<Descriptions.Item label="考核进度&考核状态" span={4}>
+				<Descriptions.Item label="考核进度&考核状态" span={5}>
 					<Steps
 						current={progress}
 						onChange={(value) => {
@@ -169,7 +172,7 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 						<Button style={{ marginLeft: 666 }}>修改状态</Button>
 					</Popconfirm>
 				</Descriptions.Item>
-				<Descriptions.Item label="个人介绍" span={4}>
+				<Descriptions.Item label="个人介绍" span={5}>
 					{userData?.introduction}
 				</Descriptions.Item>
 				{comment.map((data) => {
