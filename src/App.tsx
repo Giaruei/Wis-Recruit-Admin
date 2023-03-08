@@ -41,7 +41,7 @@ const App: FC = () => {
 		<ConfigProvider theme={dark ? darkTheme : lightTheme}>
 			<Layout
 				style={{
-					margin: 0,
+					margin: -8,
 					padding: 0,
 					minHeight: "1000px",
 				}}
