@@ -2,7 +2,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-19 15:02:57
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-24 20:08:31
+ * @LastEditTime: 2023-03-08 20:52:23
  * @FilePath: \WIS-Recruit\src\components\Interview\InterviewTable\index.tsx
  * @Description: 展示面试人员的列表 可修改考核状态
  */
@@ -25,8 +25,7 @@ interface Idata {
 }
 
 const api = axios.create({
-	baseURL: "http://43.139.33.166/api/admin",
-	// baseURL: "http://127.0.0.1:4523/m1/1875832-0-default/admin",
+	baseURL: "https://wisstudio.top/api/admin",
 });
 
 const InterviewTable: FC<Iprops> = ({ direction }) => {

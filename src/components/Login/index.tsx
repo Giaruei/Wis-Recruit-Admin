@@ -21,7 +21,7 @@ const Login = () => {
 	const navigate = useNavigate();
 	const onFinish = (values: Idata) => {
 		const api = axios.create({
-			baseURL: "http://43.139.33.166/api/admin/login",
+			baseURL: "https://wisstudio.top/api/admin/login",
 		});
 		api
 			.post("", {

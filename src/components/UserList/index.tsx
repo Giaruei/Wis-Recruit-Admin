@@ -3,7 +3,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-11 21:55:51
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-24 20:27:05
+ * @LastEditTime: 2023-03-08 20:50:45
  * @FilePath: \WIS-Recruit\src\components\UserList\index.tsx
  * @Description: 用于展示各个方向所有学生信息
  */
@@ -23,7 +23,7 @@ interface Idata {
 	userName: string;
 }
 const api = axios.create({
-	baseURL: "http://43.139.33.166/api/admin",
+	baseURL: "https://wisstudio.top/api/admin",
 });
 const UserList: FC<Iprops> = ({ index }) => {
 	const [open, setOpen] = useState(false);

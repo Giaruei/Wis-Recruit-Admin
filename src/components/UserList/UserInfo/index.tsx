@@ -3,7 +3,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-14 14:32:49
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-03-07 00:08:40
+ * @LastEditTime: 2023-03-07 21:47:15
  * @FilePath: \WIS-Recruit\src\components\UserList\UserInfo\index.tsx
  * @Description: 展示学生的个人信息和管理员的评价
  */
@@ -42,7 +42,7 @@ interface Icomment {
 	context: string;
 }
 const api = axios.create({
-	baseURL: "http://43.139.33.166/api/admin",
+	baseURL: "https://wisstudio.top/api/admin",
 });
 const UserInfo: FC<Iprops> = ({ userId }) => {
 	const [userData, setUserData] = useState<Idata>();
@@ -103,9 +103,7 @@ const UserInfo: FC<Iprops> = ({ userId }) => {
 				<Descriptions.Item label="学号">
 					{userData?.stuNumber}
 				</Descriptions.Item>
-				<Descriptions.Item label="手机">
-					{userData?.phoneNum}
-				</Descriptions.Item>
+				<Descriptions.Item label="手机">{userData?.phoneNum}</Descriptions.Item>
 				<Descriptions.Item label="方向">
 					{userData?.direction}
 				</Descriptions.Item>

@@ -27,13 +27,11 @@ const App: FC = () => {
 		},
 		algorithm: theme.darkAlgorithm,
 	};
-
 	const lightTheme = {
 		token: {
 			colorPrimary: "#95de64",
 		},
 	};
-
 	// 本地没有token说明未登录
 	if (!localStorage.getItem("token")) {
 		// 跳转到登录界面
@@ -145,7 +143,7 @@ const App: FC = () => {
 								}}
 								onClick={() => {
 									// 带上token跳转
-									window.location.href = `http://43.139.33.166/api/admin/export/excel/${
+									window.location.href = `https://wisstudio.top/api/admin/export/excel/${
 										parseInt(index) + "?token=" + localStorage.getItem("token")
 									}`;
 								}}
@@ -175,21 +173,3 @@ const App: FC = () => {
 };
 
 export default App;
-// const xhr = new XMLHttpRequest();
-// xhr.open(
-// 	"get",
-// 	`http://43.139.33.166/api/admin/export/excel/1`,
-// 	true
-// );
-// xhr.responseType = "blob";
-// xhr.setRequestHeader("token", localStorage.getItem("token")!);
-// xhr.onload = function () {
-// 	if (this.status === 200) {
-// 		const blob = this.response;
-// 		const a = document.createElement("a");
-// 		const url = window.URL.createObjectURL(blob);
-// 		a.href = url;
-// 		a.download = ".xls";
-// 	}
-// };
-// xhr.send();

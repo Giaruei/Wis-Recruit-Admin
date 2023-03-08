@@ -19,7 +19,7 @@ const Select: FC<Iprops> = ({ status, id }) => {
 	const [state, setState] = useState<number>(status);
 	const navigate = useNavigate();
 	const api = axios.create({
-		baseURL: "http://43.139.33.166/api/admin",
+		baseURL: "https://wisstudio.top/api/admin",
 	});
 	return (
 		<Segmented
@@ -43,7 +43,7 @@ const Select: FC<Iprops> = ({ status, id }) => {
 							if (!res.data.success) {
 								alert("token过期了，请重新登录");
 								localStorage.removeItem("token");
-								localStorage.removeItem("adminName")
+								localStorage.removeItem("adminName");
 								return navigate("");
 							}
 						});
