@@ -2,7 +2,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-30 16:40:24
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-02-23 23:33:32
+ * @LastEditTime: 2023-03-17 21:17:37
  * @FilePath: \WIS-Recruit\src\components\Login\index.tsx
  * @Description:
  */
@@ -57,6 +57,7 @@ const Login = () => {
 					top: "50%",
 					left: "50%",
 					transform: "translate(-50%, -60%)",
+					textAlign: 'center'
 				}}
 				initialValues={{ remember: true }}
 				onFinish={onFinish}
@@ -91,6 +92,7 @@ const Login = () => {
 				>
 					登录
 				</Button>
+				<a href="https://beian.miit.gov.cn/">粤ICP备2023017704号-1</a>
 			</Form>
 			<ParticlesBg type="square" />
 		</ConfigProvider>

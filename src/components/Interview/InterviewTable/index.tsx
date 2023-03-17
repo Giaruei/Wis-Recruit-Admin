@@ -2,7 +2,7 @@
  * @Author: 前端天才蔡嘉睿
  * @Date: 2023-01-19 15:02:57
  * @LastEditors: Giaruei 247658354@qq.com
- * @LastEditTime: 2023-03-08 20:52:23
+ * @LastEditTime: 2023-03-17 21:24:27
  * @FilePath: \WIS-Recruit\src\components\Interview\InterviewTable\index.tsx
  * @Description: 展示面试人员的列表 可修改考核状态
  */
@@ -60,7 +60,7 @@ const InterviewTable: FC<Iprops> = ({ direction }) => {
 	};
 	return (
 		<Space direction="vertical" style={{ width: "100%" }}>
-			<h3 style={{ textAlign: "center" }}>
+			<h3 style={{ textAlign: "center", color: "#95de64" }}>
 				{(() => {
 					// 这里用Switch语句要用一个立即执行函数包裹
 					switch (direction) {
