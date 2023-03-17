@@ -165,6 +165,7 @@ const App: FC = () => {
 					</Content>
 					<Footer style={{ textAlign: "center" }}>
 						WISStudio ©2023 Created by CJR
+						<a href="https://beian.miit.gov.cn/">粤ICP备2023017704号-1</a>
 					</Footer>
 				</Layout>
 			</Layout>
